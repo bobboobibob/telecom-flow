@@ -4,7 +4,7 @@ let args = $argument;
 let free_domain = args.free_domain || "vod.189.cn";
 let free_domains = $persistentStore.read("free_domains") ? JSON.parse($persistentStore.read("free_domains")) : [free_domain];
 
-// 匹配潜在免流域名（参考 sooyaaabo/Loon 的规则）
+// 扩展免流域名列表，添加淘宝相关域名
 let telecomPatterns = [
     "189.cn",
     "telecom",
@@ -13,8 +13,13 @@ let telecomPatterns = [
     "tencent.com",
     "cloud.189.cn",
     "mkt.189.cn",
-    "freeflow",
-    "ctyun.cn" // 电信云服务，常见免流
+    "damai.cn",
+    "dangbei.com",
+    "dangbei.net",
+    "ctyun.cn",
+    "telecom.cn",
+    "taobao.com", // 新增淘宝
+    "alipay.com"  // 淘宝可能涉及支付宝
 ];
 
 // 检查是否匹配免流域名
