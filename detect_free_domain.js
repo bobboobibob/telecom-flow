@@ -7,16 +7,11 @@ let free_domains = $persistentStore.read("free_domains") ? JSON.parse($persisten
 // 添加调试日志
 $notification.post("脚本运行 - 检测域名", hostname, url);
 
-// 检测免流域名的函数（简化版，假设 Senplayer 相关域名为免流）
+// 检测免流域名的函数（简化版，假设 Emby 相关域名为免流）
 function detectFreeFlowDomain(hostname, callback) {
-    // Senplayer 相关域名，假设为免流（需测试确认）
-    let senplayerDomains = [
-        "285286.xyz",
-        "byusers.me"
-    ];
-
-    let isFreeFlow = senplayerDomains.some(domain => hostname.includes(domain));
-    callback(isFreeFlow);
+    // 假设所有 Emby 相关域名可能是免流（需测试确认）
+    let isEmbyRelated = url.includes("/emby/");
+    callback(isEmbyRelated);
 }
 
 // 检测是否为免流域名
