@@ -7,6 +7,7 @@ $notification.post("伪装脚本运行", "修改响应", "User-Agent: " + user_a
 
 // 增强伪装
 headers["X-Telecom-Service"] = "FreeFlow";
+headers["X-Telecom-Flow"] = "Exempt"; // 增加电信免流标识
 headers["User-Agent"] = user_agent;
 headers["X-CT-Client"] = "CTClient/6.0";
 headers["X-Telecom-Token"] = "FreeFlowToken";
