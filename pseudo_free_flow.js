@@ -2,10 +2,15 @@ let headers = $response.headers;
 let args = $argument;
 let user_agent = args.user_agent || "ChinaTelecomApp/5.0";
 
+// 跳过视频请求的伪装头修改
+if ($request.url.includes("/emby/Videos")) {
+    $done({ headers });
+}
+
 // 添加调试日志
 $notification.post("伪装脚本运行", "修改响应", "User-Agent: " + user_agent);
 
-// 增强伪装
+// 增强伪装（仅对非视频请求）
 headers["X-Telecom-Service"] = "FreeFlow";
 headers["X-Telecom-Flow"] = "Exempt";
 headers["User-Agent"] = user_agent;
