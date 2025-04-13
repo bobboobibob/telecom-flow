@@ -2,12 +2,9 @@ let args = $argument;
 let free_domain = args.free_domain || "vod.189.cn";
 let free_domains = $persistentStore.read("free_domains") ? JSON.parse($persistentStore.read("free_domains")) : [free_domain];
 
-// 仅保留 Senplayer 相关域名
-let senplayerDomains = free_domains.filter(domain => domain.includes("285286.xyz") || domain.includes("byusers.me"));
-
 // 生成规则
-let rules = senplayerDomains.map(domain => `DOMAIN,${domain},DIRECT`).join("\n");
-let mitm_hosts = senplayerDomains.map(domain => `*.${domain}`).join(", ");
+let rules = free_domains.map(domain => `DOMAIN,${domain},DIRECT`).join("\n");
+let mitm_hosts = free_domains.map(domain => `*.${domain}`).join(", ");
 
 // 存储规则
 $persistentStore.write("dynamic_rules", rules);
