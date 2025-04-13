@@ -11,6 +11,6 @@ $persistentStore.write("dynamic_rules", rules);
 $persistentStore.write("dynamic_mitm", mitm_hosts);
 
 // 通知用户
-$notification.post("规则更新", "请手动更新规则", `规则:\n${rules}\n\nMitM:\n${mitm_hosts}`);
+$notification.post("规则更新", "请手动更新配置文件", `添加以下规则到 [rule]:\n${rules}\n\n添加以下域名到 [mitm]:\n${mitm_hosts}`);
 
 $done();
